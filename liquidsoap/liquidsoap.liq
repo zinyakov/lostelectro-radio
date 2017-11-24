@@ -2,7 +2,7 @@
 
 source = playlist(
   getenv('PLAYLIST_URI'),
-  mime_type='audio/mpeg'
+  mime_type='application/x-mpegURL'
 )
 
 output.icecast(
