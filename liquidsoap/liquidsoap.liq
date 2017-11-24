@@ -1,9 +1,8 @@
 #!/usr/bin/liquidsoap
 
 source = playlist(
-    '/data/playlist.txt',
-    reload=1,
-    reload_mode='rounds'
+  getenv('PLAYLIST_URI'),
+  mime_type='audio/mpeg'
 )
 
 output.icecast(
@@ -12,10 +11,6 @@ output.icecast(
     port=int_of_string(getenv('ICECAST_PORT_8000_TCP_PORT')),
     password=getenv('ICECAST_ENV_ICECAST_SOURCE_PASSWORD'),
     mount='stream',
-    name='Midnight Athletics Radio',
-    genre='House',
-    description='All vinyl, all the time.',
-    url='http://midnightathletics.com',
     fallible=true,
     source
 )

@@ -21,3 +21,5 @@ liquidsoap:
     - 8800:8800
   links:
     - icecast
+  env_file:
+    - .env
