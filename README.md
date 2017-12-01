@@ -1,7 +1,7 @@
 radio
 =====
 
-A fork of [cburmeister/radio](https://github.com/cburmeister/radio) intended for environments without persistent file systems.
+A fork of [cburmeister/radio](https://github.com/cburmeister/radio) intended for environments without persistent file systems. Supports TLS and HTTP/2 streaming.
 
 ---
 
@@ -22,6 +22,8 @@ ICECAST_SOURCE_PASSWORD=somethingsecret
 ICECAST_ADMIN_PASSWORD=somethingsecret
 ICECAST_PASSWORD=somethingsecret
 ICECAST_RELAY_PASSWORD=somethingsecret
+ICECAST_HOST=icecast
+ICECAST_PORT=8000
 PLAYLIST_URI=example-playlist-uri.example
 ```
 
@@ -29,8 +31,5 @@ PLAYLIST_URI=example-playlist-uri.example
 
 Now you can begin broadcasting these mixes with `docker-compose up -d`.
 
-Once the services are running you can view the `icecast` interface at `:8000`.
-
+Stream will now be available on port 80.
 ---
-
-This is currently being run on an [EC2](https://aws.amazon.com/ec2/) micro instance.

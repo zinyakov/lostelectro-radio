@@ -1,24 +1,34 @@
-icecast:
-  image: moul/icecast:latest
-  volumes:
-    - /etc/localtime:/etc/localtime:ro
-  environment:
-    - ICECAST_SOURCE_PASSWORD
-    - ICECAST_ADMIN_PASSWORD
-    - ICECAST_PASSWORD
-    - ICECAST_RELAY_PASSWORD
-  ports:
-    - 8000:8000
-liquidsoap:
-  image: moul/liquidsoap:latest
-  command: liquidsoap -v --debug /liquidsoap/liquidsoap.liq
-  user: liquidsoap
-  volumes:
-    - ./liquidsoap:/liquidsoap
-    - /etc/localtime:/etc/localtime:ro
-  ports:
-    - 8800:8800
-  links:
-    - icecast
-  env_file:
-    - .env
+version: '3'
+services:
+  proxy:
+    image: zzrot/alpine-caddy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile
+      - ./.caddy:/root/.caddy
+  icecast:
+    image: moul/icecast:latest
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - ICECAST_SOURCE_PASSWORD
+      - ICECAST_ADMIN_PASSWORD
+      - ICECAST_PASSWORD
+      - ICECAST_RELAY_PASSWORD
+    ports:
+      - 8000:8000
+  liquidsoap:
+    image: moul/liquidsoap:latest
+    command: liquidsoap -v --debug /liquidsoap/liquidsoap.liq
+    user: liquidsoap
+    volumes:
+      - ./liquidsoap:/liquidsoap
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 8800:8800
+    links:
+      - icecast
+    env_file:
+      - .env
