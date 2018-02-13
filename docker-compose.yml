@@ -9,7 +9,7 @@ services:
       - ./Caddyfile:/etc/Caddyfile
       - ./.caddy:/root/.caddy
   icecast:
-  build: .
+    build: .
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
