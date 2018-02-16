@@ -1,8 +1,0 @@
-lostelectro.com {
-  proxy / icecast:8000 {
-    transparent
-    policy round_robin
-  }
-  timeouts 0
-  tls ringsheep@gmail.com
-}
