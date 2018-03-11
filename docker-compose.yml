@@ -23,7 +23,7 @@ services:
       - ICECAST_PASSWORD
       - ICECAST_RELAY_PASSWORD
     ports:
-      - "8000:8000"
+      - "8500:8500"
 
   liquidsoap:
     image: moul/liquidsoap:latest
