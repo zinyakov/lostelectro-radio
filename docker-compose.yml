@@ -1,5 +1,18 @@
 version: '3'
 services:
+
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "8000:8000"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/logs:/var/log/nginx/
+      - ./var/www/lostelectro.com:/var/www/lostelectro.com
+    links:
+      - icecast
+
   icecast:
     build: .
     volumes:
@@ -11,6 +24,7 @@ services:
       - ICECAST_RELAY_PASSWORD
     expose:
       - "8000"
+
   liquidsoap:
     image: moul/liquidsoap:latest
     command: liquidsoap -v --debug /liquidsoap/liquidsoap.liq
