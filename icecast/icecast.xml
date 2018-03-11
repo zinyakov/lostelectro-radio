@@ -49,7 +49,7 @@
     <!-- You may have multiple <listener> elements -->
     <listen-socket>
         <port>8000</port>
-        <!-- <bind-address>lostelectro.com</bind-address> -->
+        <bind-address>138.201.90.34</bind-address>
         <!-- <shoutcast-mount>/stream</shoutcast-mount> -->
     </listen-socket>
     <!--
