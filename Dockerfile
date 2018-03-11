@@ -1,2 +1,2 @@
 FROM moul/icecast
-ADD ./icecast.xml /etc/icecast2
+ADD ./icecast/icecast.xml /etc/icecast2
