@@ -26,8 +26,8 @@ services:
       - ICECAST_ADMIN_PASSWORD
       - ICECAST_PASSWORD
       - ICECAST_RELAY_PASSWORD
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
     networks:
       - service-proxy
 
