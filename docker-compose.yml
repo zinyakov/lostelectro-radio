@@ -13,17 +13,23 @@ services:
   #     - icecast
 
   icecast:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     volumes:
-      - ./icecast:/etc/icecast2
+      - ./icecast/logs:/var/log/icecast2
       - /etc/localtime:/etc/localtime:ro
     environment:
+      - VIRTUAL_HOST=lostelectro.com
+      - VIRTUAL_PORT=8000
       - ICECAST_SOURCE_PASSWORD
       - ICECAST_ADMIN_PASSWORD
       - ICECAST_PASSWORD
       - ICECAST_RELAY_PASSWORD
     ports:
-      - "8500:8500"
+      - 8000
+    networks:
+      - service-proxy
 
   liquidsoap:
     image: moul/liquidsoap:latest
@@ -38,3 +44,7 @@ services:
       - icecast
     env_file:
       - .env
+
+networks:
+  service-proxy:
+    external: true
